@@ -1,0 +1,10 @@
+{
+  "name": "com.yourorg.researchdownload",
+  "description": "ResearchDownload native messaging host",
+  "path": "native\\dist\\researchdownload_host.cmd",
+  "type": "stdio",
+  "allowed_origins": [
+    "chrome-extension://exampleid1234567890abcdef/",
+    "chrome-extension://anotherexampleid0987654321/"
+  ]
+}
