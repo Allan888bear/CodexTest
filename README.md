@@ -1,10 +1,27 @@
 # ResearchDownload Native Host
 
-This repository contains a placeholder native messaging host for the
-ResearchDownload browser extension.  The Python module
-`native/researchdownload_host.py` exposes an entry point that should be
-replaced with the real implementation that communicates with the
-extension via standard input and output.
+This repository contains a fully functioning native messaging host for
+the ResearchDownload browser extension. The Python module
+`native/researchdownload_host.py` implements the Chrome native messaging
+protocol and provides a handful of diagnostic commands that are helpful
+while integrating with the accompanying browser extension.
+
+## Host commands
+
+The reference host currently supports the following commands:
+
+| Command        | Description |
+| -------------- | ----------- |
+| `ping`         | Responds with `{"type": "pong"}` and echoes the provided `payload`. |
+| `echo`         | Returns the provided `payload` unchanged. |
+| `get_version`  | Emits the host version string. |
+| `get_manifest` | Returns the manifest JSON when the host was started with `--manifest`. |
+| `shutdown`     | Acknowledges the request and terminates the host loop. |
+
+Every successful response preserves a `requestId` field when it is
+supplied in the incoming message. Errors are reported using
+`{"type": "error", "error": {"code": ..., "message": ...}}` to make
+debugging straightforward during extension development.
 
 ## Windows launcher
 
@@ -41,3 +58,6 @@ appropriate Native Messaging Hosts directory and rewrites the manifest's
   contains correctly escaped backslashes for Windows.
 * If you update `native/researchdownload_host.py`, rerun the install script to
   propagate the changes to the Windows Native Messaging Hosts directory.
+* Execute `python -m unittest discover -s tests` from the repository root to
+  run the automated tests that exercise the native messaging host command
+  handling.
