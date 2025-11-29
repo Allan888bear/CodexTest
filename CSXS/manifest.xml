@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionManifest Version="7.0"
+    ExtensionBundleId="com.myname.laserstack"
+    ExtensionBundleName="Laser Stack Layout"
+    ExtensionBundleVersion="1.0.0">
+
+    <ExtensionList>
+        <Extension Id="com.myname.laserstack.panel" Version="1.0.0"/>
+    </ExtensionList>
+
+    <ExecutionEnvironment>
+        <HostList>
+            <!-- Illustrator host; Version is a range [min,max] -->
+            <Host Name="ILST" Version="[24.0,99.9]"/>
+        </HostList>
+        <LocaleList>
+            <Locale Code="All"/>
+        </LocaleList>
+        <RequiredRuntimeList>
+            <RequiredRuntime Name="CSXS" Version="6.0"/>
+        </RequiredRuntimeList>
+    </ExecutionEnvironment>
+
+    <DispatchInfoList>
+        <Extension Id="com.myname.laserstack.panel">
+            <DispatchInfo>
+                <Resources>
+                    <!--
+                        Point this to your panel's HTML entry point. Replace index.html with your UI file.
+                        The path is relative to the extension root.
+                    -->
+                    <MainPath>index.html</MainPath>
+                    <ScriptPath>./</ScriptPath>
+                </Resources>
+                <Lifecycle>
+                    <AutoVisible>true</AutoVisible>
+                </Lifecycle>
+                <UI>
+                    <Type>Panel</Type>
+                    <Menu>Laser Stack Layout</Menu>
+                    <Geometry Size="200,400" MinSize="200,400" MaxSize="200,400"/>
+                </UI>
+            </DispatchInfo>
+        </Extension>
+    </DispatchInfoList>
+</ExtensionManifest>
